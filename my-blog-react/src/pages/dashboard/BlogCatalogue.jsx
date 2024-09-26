@@ -6,19 +6,21 @@ function BlogCatalogue() {
   const [myPosts, setMyPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-//   const { token } = useAuthContext();
+  const {token} = useAuthContext();
 
   useEffect(function () {
     async function handleFatchMyPosts() {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:3001/api/posts", {
+        const res = await fetch("http://localhost:3001/api/posts/post-by-author", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: 'Bearer ${token}'
           },
         });
         const data = await res.json();
+        console.log(res, data)
       } catch (err) {
         console.log(err.message);
       } finally {
@@ -37,9 +39,9 @@ function BlogCatalogue() {
           Loading...
         </p>
       )}
-      {posts.length > 1 ? (
+      {(myPosts.length > 1) ? (
         <div className="page-grid">
-          {posts.map((post) => (
+          {myPosts.map((post) => 
             <figure
               className="product-figure"
               style={{ position: "relative" }}
@@ -47,11 +49,11 @@ function BlogCatalogue() {
             >
               <img className="product-img" src={""} alt="" />
               <figcaption className="product-details">
-                <h4 className="product-heading">Blog Title</h4>
-                <p className="product-text">Description</p>
+                <h4 className="product-heading">{post.title}</h4>
+                <p className="product-text"> {post.content} </p>
               </figcaption>
             </figure>
-          ))}
+          )}
         </div>
       ) : (
         <div
