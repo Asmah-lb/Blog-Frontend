@@ -6,7 +6,7 @@ function BlogCatalogue() {
   const [myPosts, setMyPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { token } = useAuthContext();
+//   const { token } = useAuthContext();
 
   useEffect(function () {
     async function handleFatchMyPosts() {

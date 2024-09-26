@@ -9,7 +9,7 @@ const Login = function () {
   const[password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const { handleChange } = useAuthContext();
+  // const { handleChange } = useAuthContext();
 
   console.log(email, password);
 

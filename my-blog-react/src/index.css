@@ -511,10 +511,18 @@ body {
 
 /* ============Account Profile=========== */
 .profile-grid{
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  padding: 0px 100px;
+  align-items: center;
   
 }
-/* .profile-form{} */
+.profile-grid h3{
+  color: darkred;
+}
+.profile-form{
+  display: grid;
+  gap: 30px;
+}
 /* .form-item{} */
 /* .form-label{} */
 /* .form-input{} */

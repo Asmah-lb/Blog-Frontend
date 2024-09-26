@@ -1,7 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 
 
 function AccountProfile(){
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] =useState('');
+
+
     return(
         <>
         <div className="profile-grid">
@@ -17,10 +22,10 @@ function AccountProfile(){
                     <input className="form-label" type="email" readOnly="readonly" value={email} onChange={e => setEmail(e.target.value)}/>
                 </div>
 
-                {/* <div className="form-item">
-                    <label className="form-label" htmlFor="username">Username</label>
-                    <input className="form-input" value={userName}  />
-                </div> */}
+                <div className="form-item">
+                    <label className="form-label" htmlFor="phoneNumber">Phone Number</label>
+                    <input className="form-input" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
+                </div>
 
 
             </form>
