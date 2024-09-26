@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FigImg from "../assets/imageblog.png";
 import ImgB1 from "../assets/featured imagefeatured img.png";
 import ImgB2 from "../assets/featured imagefeaturedImg.png";
@@ -13,6 +13,30 @@ import BlogSection from "./BlogSection";
 import BlogBtn from "./BlogBtn";
 
 const BlogMain = function () {
+
+const [posts, setPosts] = useState([]);
+const [isLoading, setIsLoading] = useState(false);
+
+async function handleFetchPost() {
+  try{
+    setIsLoading(true)
+    const res = await fetch('http://localhost:3001/api/posts');
+    const data = await res.json()
+
+    setPosts(data.data.posts);
+
+  }catch(err){
+    console.log(err.message)
+  }finally{
+    setIsLoading(false)
+  }
+  
+}
+
+useEffect(function(){
+  handleFetchPost();
+}, []);
+
   return (
     <div className="main-content">
       <HeroSection
@@ -30,7 +54,7 @@ const BlogMain = function () {
         imgBlog={ImgB1}
       />
 
-      <BlogSection
+      {/* <BlogSection
         blogDate="4 Jan,2024 . #lifestyle"
         blogText="Elevating Your Style with Minimal Environmental Footprint"
         imgBlog={ImgB2}
@@ -65,7 +89,7 @@ const BlogMain = function () {
         blogDate="5 Jul . #lifestyle"
         blogText="Zero-Waste Living"
         imgBlog={ImgB7}
-      />
+      /> */}
       <BlogBtn btnText="Load Older" />
     </div>
   );

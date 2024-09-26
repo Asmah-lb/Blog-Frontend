@@ -43,6 +43,16 @@ const Header = function () {
         >
           Tags
         </NavLink>
+
+        <NavLink
+          to="/login"
+          className="header-link"
+          style={
+            location.pathname === "/login" ? { textDecoration: "underline" } : {}
+          }
+        >
+          Login
+        </NavLink>
       </div>
     </header>
   );

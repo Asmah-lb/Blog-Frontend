@@ -490,3 +490,31 @@ body {
   text-decoration: none;
 }
 
+.tabs{
+  margin: 10px 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.tabs .tab{
+  background-color: #eee;
+  padding: 10px 15px;
+  transition: all .35s;
+  cursor: pointer;
+
+}
+.tabs .tab.active-tab{
+  color: #fff;
+  background-color: #111;
+}
+
+/* ============Account Profile=========== */
+.profile-grid{
+  border: 1px solid black;
+  
+}
+/* .profile-form{} */
+/* .form-item{} */
+/* .form-label{} */
+/* .form-input{} */
