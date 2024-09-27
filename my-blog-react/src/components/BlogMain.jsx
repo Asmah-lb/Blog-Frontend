@@ -14,28 +14,28 @@ import BlogBtn from "./BlogBtn";
 
 const BlogMain = function () {
 
-const [posts, setPosts] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
+// const [posts, setPosts] = useState([]);
+// const [isLoading, setIsLoading] = useState(false);
 
-async function handleFetchPost() {
-  try{
-    setIsLoading(true)
-    const res = await fetch('http://localhost:3001/api/posts');
-    const data = await res.json()
+// async function handleFetchPost() {
+//   try{
+//     setIsLoading(true)
+//     const res = await fetch('http://localhost:3001/api/posts');
+//     const data = await res.json()
 
-    setPosts(data.data.posts);
+//     setPosts(data.data.posts);
 
-  }catch(err){
-    console.log(err.message)
-  }finally{
-    setIsLoading(false)
-  }
+//   }catch(err){
+//     console.log(err.message)
+//   }finally{
+//     setIsLoading(false)
+//   }
   
-}
+// }
 
-useEffect(function(){
-  handleFetchPost();
-}, []);
+// useEffect(function(){
+//   handleFetchPost();
+// }, []);
 
   return (
     <div className="main-content">

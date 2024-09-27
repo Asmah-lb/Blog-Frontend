@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContent";
+import { FaUser } from "react-icons/fa";
 
 const Header = function () {
   const location = useLocation();
   console.log(location.pathname);
+
+  const {user, token} = useAuthContext();
 
   return (
     <header className="header">
@@ -43,16 +47,22 @@ const Header = function () {
         >
           Tags
         </NavLink>
-
+        
+        {(user || token) ? (
+          <NavLink to="/dashboard" className="header-link"><FaUser style={{fontSize: "15px"}} /></NavLink>
+        ) : (
         <NavLink
           to="/login"
           className="header-link"
           style={
-            location.pathname === "/login" ? { textDecoration: "underline" } : {}
+            location.pathname === "/login"
+              ? { textDecoration: "underline" }
+              : {}
           }
         >
           Login
         </NavLink>
+        )}
       </div>
     </header>
   );

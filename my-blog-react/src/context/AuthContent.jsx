@@ -14,7 +14,7 @@ export const AuthProvider = ({children}) => {
     }
     useEffect(function(){
         Cookies.set("starterUser", JSON.stringify(user));
-        Cookies,set("starterToken",token);
+        Cookies.set("starterToken",token);
     }, [user, token]);
 
     let contextData = {

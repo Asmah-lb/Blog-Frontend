@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = function(){
+
   const[fullname, setFullname] = useState("");
   const[email, setEmail] = useState("");
   const[password, setPassword] = useState("");
@@ -40,6 +42,7 @@ const Register = function(){
           </div>
           <div className="btn">
             <button type="submit" className="register-btn" onClick={handleSignup}>{isLoading ? "Loading..." : "SignUp"}</button>
+            <Link to="/login" className="login-nav" >Login</Link>
          </div>  
         </div>
     );

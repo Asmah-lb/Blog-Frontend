@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import HeroImg from "../assets/imageheroSection.png";
 import ImgB1 from "../assets/featured imagefeatured img.png";
@@ -12,6 +12,24 @@ import BlogSection from "./BlogSection";
 import BlogBtn from "./BlogBtn";
 
 function HomeMain() {
+
+  const [posts, setPosts] = useState([]);
+
+  async function handleFetchPost() {
+    try{
+      const res = await fetch('http://localhost:3001/api/posts/');
+      const data = await res.json()
+      console.log(res, data)
+
+    } catch (err) {
+      console.log(err.message);
+    }; 
+  }
+
+  useEffect(function(){
+    handleFetchPost();
+  }, []);
+
   return (
     <div className="main-content">
       <HeroSection
@@ -28,7 +46,7 @@ function HomeMain() {
         imgBlog={ImgB1}
       />
 
-      <BlogSection
+      {/* <BlogSection
         blogDate="4 Jan,2024 . #lifestyle"
         blogText="Elevating Your Style with Minimal Environmental Footprint"
         imgBlog={ImgB2}
@@ -44,7 +62,7 @@ function HomeMain() {
         blogDate="4 Jan,2024 . #lifestyle"
         blogText="Wander Wisely: Sustainable Travel Tips for the Minimalist Explorer"
         imgBlog={ImgB4}
-      />
+      /> */}
       <BlogBtn
       btnText ="View More"
       />
