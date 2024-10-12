@@ -14,28 +14,31 @@ import BlogBtn from "./BlogBtn";
 
 const BlogMain = function () {
 
-// const [posts, setPosts] = useState([]);
-// const [isLoading, setIsLoading] = useState(false);
 
-// async function handleFetchPost() {
-//   try{
-//     setIsLoading(true)
-//     const res = await fetch('http://localhost:3001/api/posts');
-//     const data = await res.json()
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] =useState(false);
 
-//     setPosts(data.data.posts);
 
-//   }catch(err){
-//     console.log(err.message)
-//   }finally{
-//     setIsLoading(false)
-//   }
-  
-// }
+  async function handleFetchPost() {
+    try{
+      setIsLoading(true)
+      const res = await fetch('http://localhost:3001/api/posts/');
+      const data = await res.json()
 
-// useEffect(function(){
-//   handleFetchPost();
-// }, []);
+      setPosts(data.data.posts);
+
+    } catch (err) {
+      console.log(err.message);
+    }finally{
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(function(){
+    handleFetchPost();
+  }, []);
+
+  console.log(posts)
 
   return (
     <div className="main-content">
@@ -46,50 +49,20 @@ const BlogMain = function () {
         heroText="Minimalism is the key of peaceful life"
       />
 
-      <BlogSection
-        blogYear="2024"
-        blogDate="2 Feb . #minimalism"
-        blogText="Living Light: The Minimalist Lifestyle and its Environmental
-                Impact"
-        imgBlog={ImgB1}
-      />
+{isLoading && (
+          <p style={{fontSize:'20px', fontWeight: 'bold', textAlign:'center'}}>Loading...</p>
+        )}
 
-      {/* <BlogSection
-        blogDate="4 Jan,2024 . #lifestyle"
-        blogText="Elevating Your Style with Minimal Environmental Footprint"
-        imgBlog={ImgB2}
-      />
+      {posts.map(post => (
+        <BlogSection
+        blogDate="2 Feb, 2024 . #minimalism"
+        blogText={post.title}
+        imgBlog={`http://localhost:3001/assets/post/${post.image}`}
+        id={post._id}
+        />
+      ))}
 
-      <BlogSection
-        blogYear="2023"
-        blogDate="19 Dec . #minimalism"
-        blogText="Capsule Closets: Elevating Your Style with Minimal Environmental Footprint"
-        imgBlog={ImgB3}
-      />
-
-      <BlogSection
-        blogDate="21 Nov . #sustainability"
-        blogText="How Minimalist Spaces Support Eco-Friendly Living"
-        imgBlog={ImgB4}
-      />
-
-      <BlogSection
-        blogDate="11 Oct . #future"
-        blogText="Simplifying Life for a Balanced, Eco-Conscious Tomorrow"
-        imgBlog={ImgB5}
-      />
-
-      <BlogSection
-        blogDate="1 Oct . #lifestyle"
-        blogText="Redefining Success in a Earth-Friendly Life"
-        imgBlog={ImgB6}
-      />
-
-      <BlogSection
-        blogDate="5 Jul . #lifestyle"
-        blogText="Zero-Waste Living"
-        imgBlog={ImgB7}
-      /> */}
+      
       <BlogBtn btnText="Load Older" />
     </div>
   );

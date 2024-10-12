@@ -6,29 +6,33 @@ import ImgB2 from "../assets/featured imagefeaturedImg.png";
 import ImgB3 from "../assets/featured imagefeatureImg.png";
 import ImgB4 from "../assets/featured imagefeatImg.png";
 
-
 import HeroSection from "./HeroSection";
 import BlogSection from "./BlogSection";
 import BlogBtn from "./BlogBtn";
 
 function HomeMain() {
-
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleFetchPost() {
-    try{
-      const res = await fetch('http://localhost:3001/api/posts/');
-      const data = await res.json()
-      console.log(res, data)
+    try {
+      setIsLoading(true)
+      const res = await fetch("http://localhost:3001/api/posts/");
+      const data = await res.json();
 
+      setPosts(data.data.posts);
     } catch (err) {
       console.log(err.message);
-    }; 
+    }finally{
+      setIsLoading(false)
+    }
   }
 
-  useEffect(function(){
+  useEffect(function () {
     handleFetchPost();
   }, []);
+
+  console.log(posts);
 
   return (
     <div className="main-content">
@@ -39,33 +43,24 @@ function HomeMain() {
         heroText="Exploring the mountains in Indonesia - Unsplash"
       />
 
-      <BlogSection
-        blogYear="Recent Publication"
-        blogDate="2 Feb, 2024 . #minimalism"
-        blogText="Living Light: The Minimalist Lifestyle and its Environmental Impact"
-        imgBlog={ImgB1}
-      />
+      <div className="blog-articles">
+        <h3>Recent Publication</h3>
 
-      {/* <BlogSection
-        blogDate="4 Jan,2024 . #lifestyle"
-        blogText="Elevating Your Style with Minimal Environmental Footprint"
-        imgBlog={ImgB2}
-      />
+        {isLoading && (
+          <p style={{fontSize:'20px', fontWeight: 'bold', textAlign:'center'}}>Loading...</p>
+        )}
 
-      <BlogSection
-        blogDate="4 Jan,2024 . #lifestyle"
-        blogText="Designing Tranquility: How Minimalist Spaces Support Eco-Friendly Living"
-        imgBlog={ImgB3}
-      />
+        {posts.map((post) => (
+          <BlogSection
+            blogDate="2 Feb, 2024 . #minimalism"
+            blogText={post.title}
+            imgBlog={`http://localhost:3001/assets/post/${post.image}`}
+            id={post._id}
+          />
+        ))}
+      </div>
 
-      <BlogSection
-        blogDate="4 Jan,2024 . #lifestyle"
-        blogText="Wander Wisely: Sustainable Travel Tips for the Minimalist Explorer"
-        imgBlog={ImgB4}
-      /> */}
-      <BlogBtn
-      btnText ="View More"
-      />
+      <BlogBtn btnText="View More" />
     </div>
   );
 }

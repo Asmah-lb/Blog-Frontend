@@ -48,7 +48,7 @@ const Header = function () {
           Tags
         </NavLink>
         
-        {(user || token) ? (
+        {(user && token) ? (
           <NavLink to="/dashboard" className="header-link"><FaUser style={{fontSize: "15px"}} /></NavLink>
         ) : (
         <NavLink

@@ -1,19 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function BlogSection(props) {
   return (
-    <div className="blog-articles">
-      <h3>{props.blogYear}</h3>
-
+      <Link to={`/article/${props.id}`} style={{textDecoration: "none"}}>
       <div className="blog-post">
+
         <div className="blog-info">
           <p className="blog-date">{props.blogDate}</p>
           <h2 className="blog-text">{props.blogText}</h2>
         </div>
         
         <img className="blog-img" src={props.imgBlog} />
+        
       </div>
-    </div>
+      </Link>
   );
 }
 export default BlogSection;

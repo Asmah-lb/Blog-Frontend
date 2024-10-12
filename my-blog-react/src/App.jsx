@@ -24,7 +24,7 @@ const App = function () {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/article" element={<Article />}></Route>
+          <Route path="/article/:id" element={<Article />}></Route>
           <Route path="/tag" element={<Tag />}></Route>
           <Route path="/signup" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>
