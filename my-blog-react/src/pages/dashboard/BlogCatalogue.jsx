@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContent";
 
 const posts = [];
 
@@ -6,13 +8,15 @@ function BlogCatalogue() {
   const [myPosts, setMyPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const {token} = useAuthContext();
+  const {token} = useAuthContext();
+  // const { author} = useParams();
 
   useEffect(function () {
     async function handleFatchMyPosts() {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:3001/api/posts/post-by-author", {
+        const res = await fetch("http://localhost:3001/api/posts/", 
+        {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -21,6 +25,8 @@ function BlogCatalogue() {
         });
         const data = await res.json();
         console.log(res, data)
+        setMyPosts(data.data.posts);
+
       } catch (err) {
         console.log(err.message);
       } finally {

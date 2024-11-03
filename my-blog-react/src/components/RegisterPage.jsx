@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContent";
 
 const Register = function(){
 
@@ -8,11 +9,14 @@ const Register = function(){
   const[password, setPassword] = useState("");
   const[isLoading, setIsLoading] = useState(false);
 
+  const {user, handleChange } = useAuthContext();
+  const navigate = useNavigate();
+
   async function handleSignup() {
     try{
       setIsLoading(true);
 
-      const res= await fetch("http://localhost:3001/api/users/signup/",{
+      const res= await fetch("http://localhost:3001/api/users/signup",{
         method: "POST",
         headers: {
           "Content-Type":"application/json"
@@ -21,14 +25,21 @@ const Register = function(){
        });
        const data = await res.json();
        console.log(res,data)
+       //added on n0v 2//
+       handleChange(data.data.user, data.token);
+      alert(data.message);
 
     }catch (err){
       console.log(err.message);
     }finally{
       setIsLoading(false)
     }
-    
   }
+  useEffect(function(){
+    if(user) {
+      navigate('/dashboard')
+    }
+}, [user])
 
     return(
         <div className="register-container">
