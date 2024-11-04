@@ -16,7 +16,7 @@ const Register = function(){
     try{
       setIsLoading(true);
 
-      const res= await fetch("http://localhost:3001/api/users/signup",{
+      const res= await fetch("https://blog-platform-7q0v.onrender.com//api/users/signup",{
         method: "POST",
         headers: {
           "Content-Type":"application/json"

@@ -15,7 +15,7 @@ function BlogCatalogue() {
     async function handleFatchMyPosts() {
       try {
         setIsLoading(true);
-        const res = await fetch(`http://localhost:3001/api/posts/post-by-author/${author}`, 
+        const res = await fetch(`https://blog-platform-7q0v.onrender.com/api/posts/post-by-author/${author}`, 
         {
           method: "GET",
           headers: {

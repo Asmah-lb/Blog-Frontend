@@ -9,7 +9,7 @@ const ArticleMain = function () {
 
   async function fetchArticle() {
     try {
-      const res = await fetch(`http://localhost:3001/api/posts/${id}`);
+      const res = await fetch(`https://blog-platform-7q0v.onrender.com/api/posts/${id}`);
 
       const data = await res.json();
 
@@ -50,7 +50,7 @@ const ArticleMain = function () {
             </div>
             <img
               className="article-image"
-              src={`http://localhost:3001/assets/post/${article.image}`}
+              src={`https://blog-platform-7q0v.onrender.com/assets/post/${article.image}`}
             />
           </div>
           <div className="article-content">

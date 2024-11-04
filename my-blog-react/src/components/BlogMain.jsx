@@ -22,7 +22,7 @@ const BlogMain = function () {
   async function handleFetchPost() {
     try{
       setIsLoading(true)
-      const res = await fetch('http://localhost:3001/api/posts/');
+      const res = await fetch('https://blog-platform-7q0v.onrender.com/api/posts/');
       const data = await res.json()
 
       setPosts(data.data.posts);
@@ -57,7 +57,7 @@ const BlogMain = function () {
         <BlogSection
         blogDate="2 Feb, 2024 . #minimalism"
         blogText={post.title}
-        imgBlog={`http://localhost:3001/assets/post/${post.image}`}
+        imgBlog={`https://blog-platform-7q0v.onrender.com/assets/post/${post.image}`}
         id={post._id}
         />
       ))}
