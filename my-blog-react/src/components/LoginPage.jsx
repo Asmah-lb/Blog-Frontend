@@ -33,9 +33,8 @@ const Login = function () {
 
     } catch (err) {
       console.log(err.message);
-      handleChange(data.data.user, data.token);
-      alert(data.message);
-      
+      alert(message);
+
     } finally {
       setIsLoading(false);
     }
