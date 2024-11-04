@@ -20,7 +20,7 @@ function BlogCatalogue() {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: 'Bearer {token}'
+            Authorization: 'Bearer ${token}'
           },
         });
         const data = await res.json();
