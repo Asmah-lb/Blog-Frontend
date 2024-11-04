@@ -479,6 +479,7 @@ body {
   font-weight: 500;
   background-color: #3d3d3d;
   color: #fff;
+  cursor: pointer;
 }
 .login-nav{
   padding: 10px 40px;
@@ -496,6 +497,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
+  border: 1px solid black;
 }
 .tabs .tab{
   background-color: #eee;
