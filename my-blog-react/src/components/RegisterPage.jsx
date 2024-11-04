@@ -30,6 +30,10 @@ const Register = function(){
       alert(data.message);
 
     }catch (err){
+      res.status(400).json({
+        status: "fail",
+        message: err.message,
+      });
       console.log(err.message);
     }finally{
       setIsLoading(false)

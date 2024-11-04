@@ -18,7 +18,7 @@ const Login = function () {
     setIsLoading(true);
 
     try {
-      const res = await fetch("https://blog-platform-7q0v.onrender.com//api/users/login", {
+      const res = await fetch("https://blog-platform-7q0v.onrender.com/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,12 @@ const Login = function () {
       alert(data.message);
 
     } catch (err) {
+      res.status(400).json({
+        status: "fail",
+        message: err.message,
+      });
       console.log(err.message);
+      
     } finally {
       setIsLoading(false);
     }
