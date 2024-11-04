@@ -54,7 +54,7 @@ function HomeMain() {
           <BlogSection
             blogDate="2 Feb, 2024 . #minimalism"
             blogText={post.title}
-            imgBlog={`http://localhost:3001/assets/post/${post.image}`}
+            imgBlog={`https://blog-platform-7q0v.onrender.com/assets/post/${post.image}`}
             id={post._id}
           />
         ))}
