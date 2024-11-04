@@ -32,11 +32,9 @@ const Login = function () {
       alert(data.message);
 
     } catch (err) {
-      res.status(400).json({
-        status: "fail",
-        message: err.message,
-      });
       console.log(err.message);
+      handleChange(data.data.user, data.token);
+      alert(data.message);
       
     } finally {
       setIsLoading(false);
