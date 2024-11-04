@@ -15,7 +15,7 @@ function BlogCatalogue() {
     async function handleFatchMyPosts() {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:3001/api/posts/", 
+        const res = await fetch("http://localhost:3001/api/posts/post-by-author/author", 
         {
           method: "GET",
           headers: {
