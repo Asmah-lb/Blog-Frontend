@@ -9,18 +9,18 @@ function BlogCatalogue() {
   const [isLoading, setIsLoading] = useState(false);
 
   const {token} = useAuthContext();
-  // const { author} = useParams();
+  const {author} = useParams();
 
   useEffect(function () {
     async function handleFatchMyPosts() {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:3001/api/posts/post-by-author/author", 
+        const res = await fetch(`http://localhost:3001/api/posts/post-by-author/${author}`, 
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: 'Bearer ${token}'
+            Authorization: 'Bearer {token}'
           },
         });
         const data = await res.json();
